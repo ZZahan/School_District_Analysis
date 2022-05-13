@@ -1,0 +1,96 @@
+# School_District_Analysis- PyCity Schools Challenge
+
+# School_District_Analysis – using Pandas and Data Frame
+Using  Pandas Library this exercise :
+
+We need to upload the two CSV files in this exercise before we do the following deliverable:
+1.	Schools_complete.csv  - this one represents the school budget by school
+2.	Students_complate.csv – this one represents the school grades by school
+
+Deliverable 1: Replace the reading and math scores. 
+Replace the 9th grade reading and math scores at Thomas High School with NaN 
+We need to use Pandas “loc” method and NumPy module   to relance all 9th graders reading and math score.  These will eliminate the read and math scores for Thomas High School from overall scores.
+Using the  following code that show the out puts of the Data Frame:
+	Student_data_df.trail(10)  that show the output in the Jupyter Notebooks. (see the Jupiter Notebook)
+ 
+
+Deliverable 2 : Repeat the school district analysis
+•	The district summary
+•	The school summary
+•	The top 5 and bottom 5 performing schools, based on the overall passing rate
+•	The average math score for each grade level from each school
+•	The average reading score for each grade level from each school
+•	The scores by school spending per student, by school size, and by school type
+The district Summary:
+There are 15 different school represent this school district Summary with different type of schools. 
+In this exercise we can find different result with average reading and math scores and passing percentage both subjects. It also shows the overall Passing percentage for all 15 Schools and Total Budget.
+ 
+
+The school summary
+After I update the Thomson School new Math and Reading sores you see the results by respective schools:
+(see the Jupiter Notebook)
+ 
+Thomas High 
+School Result: (see the Jupiter Notebook)
+
+The top 5 and bottom 5 performing schools, based on the overall passing rate
+
+# Sort and show top five schools.
+top_schools = per_school_summary_df.sort_values(["% Overall Passing"], ascending=False)
+top_schools.head(10)
+See the result in Jupyter Notebook: 
+
+# Sort and show top five schools.
+bottom_schools = per_school_summary_df.sort_values(["% Overall Passing"], ascending=True)
+bottom_schools.head(10)
+
+See the result in Jupyter Notebook: 
+The following High School are the top 5 performing schools: 
+1.	Cabrera High School
+2.	Thomas High School
+3.	Griffin High School
+4.	Wilson High School
+5.	Pena High School
+
+The following High School are the bottom 5 performer: 
+1.	Rodriguez High School
+2.	Figueroa High School
+3.	Huang High School
+4.	Hernandez High School
+5.	Johnson High School
+
+## The average math score for each grade level from each school
+
+# Remove the index.
+math_scores_by_grade = math_scores_by_grade[
+               ["9th", "10th", "11th", "12th"]]
+
+math_scores_by_grade.index.name = None
+# Display the data frame
+math_scores_by_grade
+	see Jupyter Notebook for results in out put [43]
+
+
+##The average reading score for each grade level from each school
+
+# Remove the index.
+reading_scores_by_grade = reading_scores_by_grade[
+               ["9th", "10th", "11th", "12th"]]
+
+reading_scores_by_grade.index.name = None
+# Display the data frame
+reading_scores_by_grade
+	see Jupyter Notebook for results in out put [44]
+
+
+## The scores by school spending per student, by school size, and by school type
+# Establish the bins.
+size_bins = [0, 1000, 2000, 5000]
+group_names = ["Small (<1000)", "Medium (1000-2000)", "Large (2000-5000)"]
+# Categorize spending based on the bins.
+per_school_summary_df["School Size"] = pd.cut(per_school_summary_df["Total Students"], size_bins, labels=group_names)
+per_school_summary_df.head()
+	see Jupyter Notebook for results in out put [49]
+
+
+ 
